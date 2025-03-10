@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Scam Awareness</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset & General Styles (same as before) */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #f4f6f9; /* Light gray background */
+            color: #333;
+            line-height: 1.7;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* Header Styles (same as before) */
+        header {
+            background: linear-gradient(135deg, #2c3e50, #3498db); /* Dark blue gradient */
+            color: #fff;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 0 0 20px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1555905920-920021b91667?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat; /* Replace with a relevant image URL */
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        header > * {
+            z-index: 1; /* Ensure content is above the pseudo-element */
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        header p {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #ecf0f1;
+        }
+
+        /* Container Styles (same as before) */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Typography (same as before) */
+        h1, h2, h3 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-size: 2.4rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        /* Content Styles (same as before) */
+        .content {
+            text-align: justify;
+        }
+
+        /* Scam Section Styles (same as before) */
+        .scam-section {
+            margin-bottom: 2.5rem;
+            padding: 2rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 15px;
+            background-color: #f9f9f9;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .scam-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .scam-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .scam-section li {
+            margin-bottom: 0.75rem;
+            padding-left: 2.5rem;
+            position: relative;
+            color: #444;
+        }
+
+        .scam-section li::before {
+            content: "\f00d"; /* Font Awesome close icon */
+            font-family: FontAwesome;
+            position: absolute;
+            left: 0;
+            color: #e74c3c;
+            font-size: 0.9rem;
+        }
+
+        /* Quiz Section Styles */
+        .quiz-section {
+            margin-top: 3rem;
+            padding: 3rem;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #34495e;
+        }
+
+        .options {
+            margin: 1.5rem 0;
+        }
+
+        .options label {
+            display: block;
+            margin-bottom: 1rem;
+            padding: 1.2rem 1.5rem;
+            border: 2px solid #bdc3c7;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: #f0f0f0;
+            color: #34495e;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .options label:hover {
+            border-color: #3498db;
+            background-color: #e2f0ff;
+            color: #2980b9;
+        }
+
+        .options input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* NEW: Style for SELECTED radio button */
+        .options input[type="radio"]:checked + label {
+            background-color: #3498db;
+            color: #fff;
+            border-color: #2980b9;
+        }
+
+        .options input[type="radio"]:checked + label::before {
+            content: "\f058"; /* Font Awesome check circle */
+            font-family: FontAwesome;
+            position: absolute;
+            top: 50%;
+            right: 1rem;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+
+        /* End NEW styles */
+
+        .submit-btn {
+            background-color: #27ae60; /* Emerald Green */
+            color: white;
+            padding: 1.2rem 2rem;
+            border: none;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            display: block;
+            margin: 2.5rem auto;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: fit-content;
+        }
+
+        .submit-btn:hover {
+            background-color: #219653;
+            transform: scale(1.05);
+        }
+
+        /* Result & Feedback Styles (same as before) */
+        .result {
+            margin-top: 3rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .correct {
+            color: white;
+            background-color: #27ae60;
+        }
+
+        .incorrect {
+            color: white;
+            background-color: #e74c3c;
+        }
+
+        .feedback {
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            padding: 1.5rem;
+            border: 1px solid #d0d0d0;
+            border-radius: 10px;
+            background-color: #f8f8f8;
+            color: #555;
+        }
+
+        .feedback p {
+            margin-bottom: 0.75rem;
+        }
+
+        /* Footer Styles (same as before) */
+        footer {
+            background-color: #34495e; /* Dark Blue */
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            border-radius: 20px 20px 0 0;
+            margin-top: 3rem;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Media Queries for Responsiveness (same as before) */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 2rem;
+            }
+
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            .content, .question, .options, .result, .feedback {
+                font-size: 1rem;
+            }
+
+            .options label {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Digital Scam Awareness - A1 Force</h1>
+        <p>Empowering You to Stay Safe Online</p>
+    </header>
+
+    <div class="container">
+        <section class="content">
+            <h2>Understanding Digital Scams</h2>
+            <p>In today's digital age, scams are becoming increasingly sophisticated. It's crucial to understand how these scams operate and how to protect yourself.</p>
+
+            <h2>Common Types of Digital Scams</h2>
+
+            <section class="scam-section">
+                <h3><i class="fas fa-exclamation-triangle"></i> Phishing Scams</h3>
+                <p>Phishing scams are attempts to obtain sensitive information, such as usernames, passwords, and credit card details, by disguising as a trustworthy entity.</p>
+                <ul>
+                    <li><strong>How They Work:</strong></li>
+                    <li>Scammers send emails, messages, or calls pretending to be from legitimate organizations.</li>
+                    <li>They create a sense of urgency to pressure you into acting quickly.</li>
+                    <li>They direct you to fake websites that look real to steal your information.</li>
+                </ul>
+                <p><strong>Protect Yourself:</strong> Always verify the sender's identity, avoid clicking suspicious links, and never share sensitive information online.</p>
+            </section>
+
+            <section class="scam-section">
+                <h3><i class="fas fa-shopping-cart"></i> Online Shopping Scams</h3>
+                <p>Online shopping scams trick you into paying for products that are never delivered or are not as described.</p>
+                <ul>
+                    <li><strong>How They Work:</strong></li>
+                    <li>Scammers create fake online stores with incredibly low prices.</li>
+                    <li>They ask for payment upfront through insecure methods.</li>
+                    <li>They either send a low-quality item or disappear altogether.</li>
+                </ul>
+                <p><strong>Protect Yourself:</strong> Shop from reputable stores, read reviews, use secure payment methods, and be wary of deals that seem too good to be true.</p>
+            </section>
+
+            <section class="scam-section">
+                <h3><i class="fas fa-gift"></i> Free Gift or Giveaway Scams</h3>
+                <p>Giveaway scams lure you in with the promise of a free gift or prize, only to steal your information or money.</p>
+                <ul>
+                    <li><strong>How They Work:</strong></li>
+                    <li>You receive a message claiming you've won a prize.</li>
+                    <li>You're asked to click a link and provide personal details or pay a "processing fee."</li>
+                    <li>Your information is then used for identity theft or fraud.</li>
+                </ul>
+                <p><strong>Protect Yourself:</strong> Be skeptical of unsolicited offers, never pay a fee to claim a prize, and avoid sharing personal information on unknown websites.</p>
+            </section>
+
+            <section class="scam-section">
+                <h3><i class="fas fa-users"></i> Facebook Marketplace Scams</h3>
+                <p>Facebook Marketplace scams involve fraudulent sellers who try to trick you into sending money without receiving the promised product.</p>
+                <ul>
+                    <li><strong>How They Work:</strong></li>
+                    <li>Scammers list items at attractive prices on Facebook Marketplace.</li>
+                    <li>They ask for an advance payment before delivering the product.</li>
+                    <li>They stop responding after receiving the payment.</li>
+                </ul>
+                <p><strong>Protect Yourself:</strong> Meet in person to inspect the product before paying, use secure payment methods, and be cautious of sellers who pressure you into making a quick decision.</p>
+            </section>
+
+            <section class="scam-section">
+                <h3>Staying Safe Online</h3>
+                <ul>
+                    <li>Never click on suspicious links or enter personal details on unknown websites.</li>
+                    <li>Always verify the legitimacy of online stores and sellers before making payments.</li>
+                    <li>Be cautious of messages claiming you won a prize, especially if you didn't enter a contest.</li>
+                    <li>Use strong, unique passwords for all your online accounts.</li>
+                    <li>Enable two-factor authentication whenever possible.</li>
+                    <li>Keep your software and devices updated to protect against vulnerabilities.</li>
+                </ul>
+            </section>
+        </section>
+
+        <section class="quiz-section">
+            <h2>Test Your Knowledge</h2>
+
+            <div class="question">1. What is the primary goal of a phishing scam?</div>
+            <div class="options">
+                <label><input type="radio" name="q1" value="A"> A) To steal personal and financial information</label>
+                <label><input type="radio" name="q1" value="B"> B) To provide free gifts</label>
+                <label><input type="radio" name="q1" value="C"> C) To promote online businesses</label>
+                <label><input type="radio" name="q1" value="D"> D) To sell legal software</label>
+            </div>
+
+            <div class="question">2. How do online shopping scams typically deceive people?</div>
+            <div class="options">
+                <label><input type="radio" name="q2" value="A"> A) By selling genuine products at fair prices</label>
+                <label><input type="radio" name="q2" value="B"> B) By offering extremely low prices and demanding upfront payments</label>
+                <label><input type="radio" name="q2" value="C"> C) By delivering items before receiving payment</label>
+                <label><input type="radio" name="q2" value="D"> D) By using trusted payment methods</label>
+            </div>
+
+            <div class="question">3. What is a common warning sign of a giveaway scam?</div>
+            <div class="options">
+                <label><input type="radio" name="q3" value="A"> A) It asks for personal information or a processing fee</label>
+                <label><input type="radio" name="q3" value="B"> B) The prizes are always modest</label>
+                <label><input type="radio" name="q3" value="C"> C) The giveaway is sponsored by a well-known company</label>
+                <label><input type="radio" name="q3" value="D"> D) You are personally informed by a trusted friend</label>
+            </div>
+
+            <div class="question">4. A seller on Facebook Marketplace asks you to send an advance payment before you see the product. What should you do?</div>
+            <div class="options">
+                <label><input type="radio" name="q4" value="A"> A) Send the payment immediately to secure the deal</label>
+                <label><input type="radio" name="q4" value="B"> B) Request cash on delivery or meet in person before paying</label>
+                <label><input type="radio" name="q4" value="C"> C) Trust them if they have a profile picture</label>
+                <label><input type="radio" name="q4" value="D"> D) Send half the payment initially and the rest later</label>
+            </div>
+
+            <div class="question">5. How can you best protect yourself from digital scams?</div>
+            <div class="options">
+                <label><input type="radio" name="q5" value="A"> A) Never click on suspicious links or share personal details</label>
+                <label><input type="radio" name="q5" value="B"> B) Always trust messages from unknown numbers</label>
+                <label><input type="radio" name="q5" value="C"> C) Share your bank details to win prizes</label>
+                <label><input type="radio" name="q5" value="D"> D) Pay for items without checking reviews or the seller's reputation</label>
+            </div>
+
+            <button class="submit-btn" onclick="checkAnswers()">Submit Answers</button>
+
+            <div id="result" class="result"></div>
+            <div id="feedback" class="feedback"></div>
+        </section>
+    </div>
+
+    <footer>Contact us at: bhumiadhikari78@gmail.com, +9779840076560</footer>
+
+    <script>
+        function checkAnswers() {
+            let score = 0;
+            let totalQuestions = 5;
+            const answers = ["A", "B", "A", "B", "A"];
+            let userAnswers = [];
+            let feedback = "";
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                let selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selectedOption) {
+                    userAnswers.push(selectedOption.value);
+                } else {
+                    userAnswers.push("");
+                }
+            }
+
+            for (let i = 0; i < totalQuestions; i++) {
+                if (userAnswers[i] === answers[i]) {
+                    score++;
+                    feedback += `<p>Q${i + 1}: Correct <i class="fas fa-check-circle" style="color:green;"></i></p>`;
+                } else {
+                    feedback += `<p>Q${i + 1}: Incorrect. The correct answer is ${answers[i]} <i class="fas fa-times-circle" style="color:red;"></i></p>`;
+                }
+            }
+
+            const result = document.getElementById("result");
+            result.innerHTML = `You scored ${score} out of ${totalQuestions}!`;
+
+            if (score === totalQuestions) {
+                result.classList.add("correct");
+                result.classList.remove("incorrect");
+            } else {
+                result.classList.add("incorrect");
+                result.classList.remove("correct");
+            }
+
+            const feedbackElement = document.getElementById("feedback");
+            feedbackElement.innerHTML = feedback;
+        }
+
+    </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const options = document.querySelectorAll(".options label");
+
+        options.forEach(option => {
+            option.addEventListener("click", function () {
+                // Find the parent .options container
+                const parentOptions = this.parentElement;
+                
+                // Remove selected class from all options within the same question
+                parentOptions.querySelectorAll("label").forEach(label => {
+                    label.classList.remove("selected");
+                });
+
+                // Add selected class to the clicked option
+                this.classList.add("selected");
+            });
+        });
+    });
+</script>
+
+<style>
+    /* Highlight selected option */
+    .options label.selected {
+        background-color: #3498db;
+        color: #fff;
+        border-color: #2980b9;
+    }
+</style>
+
+
+</body>
+</html>
